@@ -100,6 +100,17 @@ const MenuPage = () => {
                 className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-yellow-500/30 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/10"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
+                {/* Item Image */}
+                {item.image && (
+                  <div className="relative h-48 w-full mb-4 rounded-xl overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  </div>
+                )}
                 
                 {/* Item Badge */}
                 {item.featured && (
@@ -111,24 +122,6 @@ const MenuPage = () => {
                 
                 {/* Item Content */}
                 <div className="relative">
-                  
-                  {/* Animated Coffee Cup Icon for Drinks */}
-                  {(activeCategory === 'hotDrinks' || activeCategory === 'coldDrinks') && (
-                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <div className="w-10 h-10 border-2 border-yellow-400 rounded-full relative">
-                        <div className="absolute -right-2 top-2 w-3 h-6 border-2 border-yellow-400 rounded-r-full"></div>
-                        <div className="absolute inset-1 bg-gradient-to-t from-amber-600 to-amber-400 rounded-full opacity-60"></div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Food/Dessert Icon */}
-                  {(activeCategory === 'food' || activeCategory === 'desserts') && (
-                    <div className="w-16 h-16 bg-gradient-to-br from-green-500/20 to-emerald-600/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <ChefHat className="text-green-400" size={32} />
-                    </div>
-                  )}
-                  
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
                     {item.name}
                   </h3>

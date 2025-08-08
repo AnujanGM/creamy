@@ -34,7 +34,7 @@ const HomePage = () => {
             </h1>
             
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Experience the perfect blend of coffee artistry and culinary excellence. 
+              Experience the perfect of coffee artistry and culinary excellence. 
               Ground floor coffee paradise, first floor food haven.
             </p>
             
