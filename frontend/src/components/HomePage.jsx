@@ -17,47 +17,54 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-black pt-16">
       
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-yellow-500/5 opacity-20"></div>
+     {/* Hero Section */}
+<section
+  className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: "url('/images/creamy.jpg')",
+  }}
+>
+  {/* Dark overlay for better contrast */}
+  <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
+    <div className="text-center">
+      <img 
+        src="https://customer-assets.emergentagent.com/job_70ecc632-a415-4311-976a-3ef4a79fcfdc/artifacts/y2iq3wf6_447264785_999914622144139_7335207405736880486_n.jpg" 
+        alt="Creamy Creations" 
+        className="mx-auto h-20 w-auto mb-8"
+      />
+      
+      <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+        Welcome to <span className="text-yellow-400">Creamy Creations</span>
+      </h1>
+      
+      <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        Experience the perfect of coffee artistry and culinary excellence. 
+        Ground floor coffee paradise, first floor food haven.
+      </p>
+      
+      <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <Link
+          to="/menu"
+          className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-yellow-500/25 flex items-center space-x-2"
+        >
+          <span>View Full Menu</span>
+          <ChevronRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
+        </Link>
         
-        <div className="relative max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <img 
-              src="https://customer-assets.emergentagent.com/job_70ecc632-a415-4311-976a-3ef4a79fcfdc/artifacts/y2iq3wf6_447264785_999914622144139_7335207405736880486_n.jpg" 
-              alt="Creamy Creations" 
-              className="mx-auto h-20 w-auto mb-8"
-            />
-            
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Welcome to <span className="text-yellow-400">Creamy Creations</span>
-            </h1>
-            
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Experience the perfect of coffee artistry and culinary excellence. 
-              Ground floor coffee paradise, first floor food haven.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link
-                to="/menu"
-                className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-yellow-500/25 flex items-center space-x-2"
-              >
-                <span>View Full Menu</span>
-                <ChevronRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
-              </Link>
-              
-              <Link
-                to="/contact"
-                className="group border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 flex items-center space-x-2"
-              >
-                <MapPin size={20} />
-                <span>Find Us</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+        <Link
+          to="/contact"
+          className="group border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-semibold py-4 px-8 rounded-full transition-all duration-300 flex items-center space-x-2"
+        >
+          <MapPin size={20} />
+          <span>Find Us</span>
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Quick Stats */}
       <section className="py-16 bg-gradient-to-r from-gray-900 to-black border-y border-yellow-500/10">
