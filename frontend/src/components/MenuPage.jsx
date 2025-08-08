@@ -22,34 +22,41 @@ const MenuPage = () => {
   return (
     <div className="min-h-screen bg-black pt-16">
       
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-black via-gray-900 to-black py-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-yellow-500/5 opacity-50"></div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Our <span className="text-yellow-400">Menu</span>
-          </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Discover our carefully crafted beverages and delicious food items, 
-            made fresh daily with premium ingredients
-          </p>
-          
-          {/* Search Bar */}
-          <div className="max-w-md mx-auto">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search menu items..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-full py-3 px-6 pl-12 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-colors duration-300"
-              />
-              <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-            </div>
-          </div>
-        </div>
-      </section>
+     {/* Hero Section */}
+<section
+  className="relative bg-cover bg-center bg-no-repeat py-20"
+  style={{
+    backgroundImage: "url('/images/creamy_m.png')",
+  }}
+>
+  {/* Overlay for readability */}
+  <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+      Our <span className="text-yellow-400">Menu</span>
+    </h1>
+    <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+      Discover our carefully crafted beverages and delicious food items, 
+      made fresh daily with premium ingredients
+    </p>
+
+    {/* Search Bar */}
+    <div className="max-w-md mx-auto">
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search menu items..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-full py-3 px-6 pl-12 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-colors duration-300"
+        />
+        <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Category Navigation */}
       <section className="sticky top-16 z-40 bg-black/90 backdrop-blur-md border-b border-yellow-500/20">
