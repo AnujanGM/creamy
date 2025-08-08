@@ -1,5 +1,2 @@
-[build]
-  base = "frontend"
-  node_version = "22"
-  command = "npm run build"
-  publish = "frontend/build"
+[build.environment]
+NODE_VERSION = "20"
