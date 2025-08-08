@@ -262,15 +262,103 @@ const FeaturedItem = ({ item }) => {
               {item.price}
             </span>
             <button
-              onClick={handleManualStart}
-              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-yellow-500/25"
-              disabled={isAnimating}
+              onClick={startScientificAnimation}
+              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-yellow-500/25 flex items-center space-x-2"
+              disabled={animationPhase !== 'idle'}
             >
-              {isAnimating ? 'Watch Magic...' : 'See Layers'}
+              <RotateCcw size={18} />
+              <span>
+                {animationPhase === 'idle' ? 'Analyze Layers' : 
+                 animationPhase === 'starting' ? 'Initializing...' :
+                 animationPhase === 'exploding' ? 'Analyzing...' :
+                 'Synthesizing...'}
+              </span>
             </button>
           </div>
+
+          {/* Scientific Data Display */}
+          {animationPhase !== 'idle' && (
+            <div className="mt-8 p-4 bg-black/40 border border-yellow-500/20 rounded-lg">
+              <h4 className="text-yellow-400 font-mono text-sm mb-3 uppercase tracking-wider">
+                Layer Analysis
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                {item.layers.map((layer, index) => (
+                  <div 
+                    key={index} 
+                    className="text-xs font-mono text-gray-300 flex items-center space-x-2"
+                  >
+                    <div 
+                      className="w-3 h-3 rounded-full border border-white/30"
+                      style={{ backgroundColor: layer.color }}
+                    ></div>
+                    <span>{layer.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Advanced CSS Keyframes */}
+      <style jsx>{`
+        @keyframes scientificRotate {
+          0% { 
+            transform: rotateY(0deg) rotateX(10deg) rotateZ(0deg);
+          }
+          25% { 
+            transform: rotateY(90deg) rotateX(15deg) rotateZ(5deg);
+          }
+          50% { 
+            transform: rotateY(180deg) rotateX(10deg) rotateZ(0deg);
+          }
+          75% { 
+            transform: rotateY(270deg) rotateX(15deg) rotateZ(-5deg);
+          }
+          100% { 
+            transform: rotateY(360deg) rotateX(10deg) rotateZ(0deg);
+          }
+        }
+
+        @keyframes scientificPulse {
+          0%, 100% { 
+            opacity: 0.2;
+            transform: scale(1);
+          }
+          50% { 
+            opacity: 0.6;
+            transform: scale(1.05);
+          }
+        }
+
+        @keyframes particleOrbit {
+          0% {
+            opacity: 0;
+            transform: rotate(0deg) translateX(60px) scale(0);
+          }
+          25% {
+            opacity: 1;
+            transform: rotate(90deg) translateX(80px) scale(1);
+          }
+          75% {
+            opacity: 1;
+            transform: rotate(270deg) translateX(100px) scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: rotate(360deg) translateX(60px) scale(0);
+          }
+        }
+
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+
+        .transform-style-3d {
+          transform-style: preserve-3d;
+        }
+      `}</style>
     </div>
   );
 };
