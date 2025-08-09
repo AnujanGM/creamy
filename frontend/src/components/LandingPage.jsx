@@ -25,7 +25,7 @@ const LandingPage = () => {
   }, [navigate]);
 
   const handleEnter = () => {
-    navigate('/home');
+    navigate('/menu');
   };
 
   return (
