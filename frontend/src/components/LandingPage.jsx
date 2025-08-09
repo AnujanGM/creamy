@@ -20,7 +20,7 @@ const LandingPage = () => {
 
     // Auto-redirect after animation
     setTimeout(() => {
-      navigate('/home');
+      navigate('/menu');
     }, 6000);
   }, [navigate]);
 
