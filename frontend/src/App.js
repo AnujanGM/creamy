@@ -17,20 +17,21 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           
           {/* Main app routes with navigation */}
-          <Route path="/home" element={
-            <>
-              <Navigation />
-              <HomePage />
-            </>
-          } />
-          
           <Route path="/menu" element={
             <>
               <Navigation />
               <MenuPage />
             </>
           } />
+        
           
+          <Route path="/home" element={
+            <>
+              <Navigation />
+              <HomePage />
+            </>
+          } />
+        
           <Route path="/contact" element={
             <>
               <Navigation />
