@@ -155,7 +155,7 @@ export const shopInfo = {
   tagline: "Where every sip tells a story",
   email: "creamycreations1808@gmail.com",
   phone: "076 658 7149",
-  address: "67/2 Kandy Road, Jaffna, Sri Lanka, 40000",
+  address: " 67/2 Kandy Rd, Jaffna 40000",
   floors: { ground: "Coffee Shop", first: "Food Shop" },
   hours: { weekdays: "7:00 AM - 10:00 PM", weekends: "7:00 AM - 11:00 PM" }
 };

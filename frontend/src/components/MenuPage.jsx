@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Star, Clock, ChefHat, Filter } from 'lucide-react';
 import { menuItems } from '../mock';
+import { useCart } from '../context/CartContext';
 
 const MenuPage = () => {
   const [activeCategory, setActiveCategory] = useState('hotDrinks');
   const [searchTerm, setSearchTerm] = useState('');
+  const { addItem } = useCart();
 
   const categories = [
     { id: 'hotDrinks', name: 'Hot Drinks', items: menuItems.hotDrinks, color: 'from-orange-500 to-red-500' },
@@ -21,42 +23,35 @@ const MenuPage = () => {
 
   return (
     <div className="min-h-screen bg-black pt-16">
-      
-     {/* Hero Section */}
-<section
-  className="relative bg-cover bg-center bg-no-repeat py-20"
-  style={{
-    backgroundImage: "url('/images/creamy_m.png')",
-  }}
->
-  {/* Overlay for readability */}
-  <div className="absolute inset-0 bg-black/60 z-0"></div>
-
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-      Our <span className="text-yellow-400">Menu</span>
-    </h1>
-    <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-      Discover our carefully crafted beverages and delicious food items, 
-      made fresh daily with premium ingredients
-    </p>
-
-    {/* Search Bar */}
-    <div className="max-w-md mx-auto">
-      <div className="relative">
-        <input
-          type="text"
-          placeholder="Search menu items..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-full py-3 px-6 pl-12 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-colors duration-300"
-        />
-        <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-      </div>
-    </div>
-  </div>
-</section>
-
+      {/* Hero Section */}
+      <section
+        className="relative bg-cover bg-center bg-no-repeat py-20"
+        style={{ backgroundImage: "url('/images/creamy_m.png')" }}
+      >
+        <div className="absolute inset-0 bg-black/60 z-0"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Our <span className="text-yellow-400">Menu</span>
+          </h1>
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Discover our carefully crafted beverages and delicious food items, 
+            made fresh daily with premium ingredients
+          </p>
+          {/* Search Bar */}
+          <div className="max-w-md mx-auto">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search menu items..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-full py-3 px-6 pl-12 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-colors duration-300"
+              />
+              <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Category Navigation */}
       <section className="sticky top-16 z-40 bg-black/90 backdrop-blur-md border-b border-yellow-500/20">
@@ -82,7 +77,6 @@ const MenuPage = () => {
       {/* Menu Items Grid */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
           {/* Category Header */}
           <div className="text-center mb-12">
             {categories.map((category) => (
@@ -104,7 +98,7 @@ const MenuPage = () => {
             {filteredItems.map((item, index) => (
               <div
                 key={item.id}
-                className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-yellow-500/30 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/10"
+                className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-yellow-500/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/10"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Item Image */}
@@ -118,7 +112,7 @@ const MenuPage = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   </div>
                 )}
-                
+
                 {/* Item Badge */}
                 {item.featured && (
                   <div className="flex items-center space-x-1 mb-4">
@@ -126,29 +120,26 @@ const MenuPage = () => {
                     <span className="text-yellow-400 text-sm font-semibold">Featured</span>
                   </div>
                 )}
-                
+
                 {/* Item Content */}
                 <div className="relative">
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
                     {item.name}
                   </h3>
-                  
                   <p className="text-gray-300 text-sm mb-4 leading-relaxed">
                     {item.description}
                   </p>
-                  
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-yellow-400">
                       {item.price}
                     </span>
-                    
                     <div className="flex items-center space-x-2 text-gray-400 text-sm">
                       <Clock size={14} />
                       <span>5-7 mins</span>
                     </div>
                   </div>
-                  
-                  {/* Layers Preview for Special Items */}
+
+                  {/* Layers Preview */}
                   {item.layers && (
                     <div className="mt-4 p-3 bg-black/30 rounded-lg">
                       <p className="text-xs text-gray-400 mb-2">Layers:</p>
@@ -166,15 +157,18 @@ const MenuPage = () => {
                     </div>
                   )}
                 </div>
-                
-                {/* Order Button */}
-                <button className="w-full mt-4 bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 hover:from-yellow-500 hover:to-yellow-600 text-yellow-400 hover:text-black border border-yellow-500/30 hover:border-yellow-500 font-semibold py-2 px-4 rounded-lg transition-all duration-300">
-                  Add to Order
+
+                {/* Add to Cart */}
+                <button
+                  onClick={() => addItem(item)}
+                  className="w-full mt-4 bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 hover:from-yellow-500 hover:to-yellow-600 text-yellow-400 hover:text-black border border-yellow-500/30 hover:border-yellow-500 font-semibold py-2 px-4 rounded-lg transition-all duration-300"
+                >
+                  Add to Cart
                 </button>
               </div>
             ))}
           </div>
-          
+
           {/* No Results */}
           {filteredItems.length === 0 && (
             <div className="text-center py-16">
@@ -200,7 +194,6 @@ const MenuPage = () => {
               <p className="text-gray-300">Coffee Shop</p>
               <p className="text-sm text-gray-400 mt-2">Hot drinks, cold beverages, and light snacks</p>
             </div>
-            
             <div className="text-center">
               <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-white font-bold text-2xl">1</span>

@@ -257,18 +257,19 @@ const ContactPage = () => {
           </div>
           
           <div className="rounded-2xl overflow-hidden border border-gray-700 shadow-2xl">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.8234567890123!2d80.0234567!3d9.6616789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMzknNDIuMCJOIDgwwrAwMScyNC41IkU!5e0!3m2!1sen!2slk!4v1234567890"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Creamy Creations Location"
-              className="grayscale hover:grayscale-0 transition-all duration-500"
-            />
-          </div>
+          <iframe
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBNn6LzAwtpTaGg0kZsUpR5CESQOQ-d8MY&q=${encodeURIComponent(shopInfo.address)}&zoom=16`}
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Creamy Creations Location"
+            className="grayscale hover:grayscale-0 transition-all duration-500"
+          />
+</div>
+
         </div>
       </section>
 
